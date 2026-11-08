@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="v è n u s"><meta name="application-name" content="v è n u s"><meta name="theme-color" content="#ffffff"><script>if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>V È N U S . Q U E S T</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;800;900&display=swap">
+<style>
+:root{
+  --bg:#FBFAF8; --ink:#2B2729; --muted:#6F6769; --line:#ECE6E3;
+  --rosa:#F48591; --coral:#FA8D85; --pessego:#FEA283; --laranja:#FFB872; --salvia:#8DA599; --verm:#AC0000;
+  --c:#F48591; color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Figtree",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+
+nav.topo{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav.topo .wrap{display:flex;gap:8px;align-items:center;overflow-x:auto;padding-block:14px;scrollbar-width:none}
+nav.topo .wrap::-webkit-scrollbar{display:none}
+nav.topo .marca{font-weight:900;letter-spacing:-.02em;font-size:18px;margin-right:10px;white-space:nowrap}
+nav.topo a,nav.topo button.pill{flex:none;text-decoration:none;color:var(--ink);font:600 13px/1 "Figtree",system-ui,sans-serif;letter-spacing:0;text-transform:none;padding:11px 14px;border-radius:999px;border:0;background:color-mix(in srgb,var(--p,#ddd) 35%,#fff);white-space:nowrap;cursor:pointer;transition:transform .2s}
+nav.topo a:hover,nav.topo a:focus-visible,nav.topo button.pill:hover{transform:translateY(-2px);outline:none}
+nav.topo .off{opacity:.35;pointer-events:none}
+
+/* abertura: o nome gigante, cada letra de uma cor, igual ao painel */
+.abre{padding-block:14vh 4vh}
+.abre h1{margin:0;font-weight:900;font-size:var(--tam,clamp(76px,17vw,240px));line-height:.86;letter-spacing:-.06em;overflow-wrap:anywhere}
+.abre h1 span{display:inline-block}
+.abre .sub{margin-top:48px;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.leitura{position:relative}
+.leitura p{position:sticky;margin:0;font-weight:800;font-size:clamp(30px,5.2vw,72px);line-height:1.05;letter-spacing:-.035em;max-width:17ch;white-space:pre-wrap}
+.leitura .t{color:rgba(43,39,41,.13);transition:color .45s ease}
+.leitura .t.on{color:var(--ink)}
+.leitura .vazio{color:rgba(43,39,41,.18)}
+
+.midias{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;padding-block:6vh 0}
+.midias .m{border-radius:28px;overflow:hidden;background:#fff;aspect-ratio:4/3}
+.midias img,.midias video{width:100%;height:100%;object-fit:cover;display:block}
+
+section.pag{padding-block:12vh 4vh}
+.cab{margin-bottom:32px}
+.cab .num{font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.cab h2{margin:0;font-weight:900;font-size:clamp(52px,10vw,132px);line-height:.85;letter-spacing:-.05em;color:var(--c)}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.card{background:color-mix(in srgb,var(--c) 16%,#fff);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card.largo{grid-column:1/-1}
+.card .tipo{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 55%,#2B2729)}
+.card input[type=text],.card textarea,.card select{width:100%;font:600 19px/1.3 "Figtree",system-ui,sans-serif;letter-spacing:-.01em;color:var(--ink);background:#fff;border:0;border-radius:12px;padding:14px;outline:2px solid transparent;transition:outline-color .2s}
+.card textarea{resize:none;overflow:hidden;min-height:140px;font-weight:500;font-size:18px;line-height:1.45}
+.card select{appearance:none;-webkit-appearance:none;cursor:pointer}
+.card input:focus,.card textarea:focus,.card select:focus{outline-color:var(--verm)}
+.card .p{margin:0;font-size:13px;color:var(--muted)}
+.midia{position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#fff;max-width:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px}
+.midia img,.midia video{width:100%;height:100%;object-fit:cover;display:block}
+.acoes{display:flex;gap:8px;flex-wrap:wrap}
+button{font:600 12px/1 "Figtree",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:12px 16px;border-radius:999px;border:2px solid var(--verm);background:var(--verm);color:#fff;cursor:pointer}
+button.leve{background:#fff;color:var(--verm)}
+button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+button[disabled]{opacity:.45;cursor:default}
+
+.rv{opacity:0;transform:translateY(44px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+#status{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:30;font:700 12px/1 "Figtree",system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:14px 20px;border-radius:999px;background:var(--verm);color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+#status.leve{background:#fff;color:var(--verm)}
+#entrar{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:24px}
+#entrar form{display:flex;flex-direction:column;gap:16px;width:min(320px,100%);text-align:center}
+#entrar label{font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase}
+#entrar input{font:inherit;font-size:22px;text-align:center;letter-spacing:.3em;padding:12px;border:2px solid var(--ink);border-radius:999px;background:transparent;outline:none}
+#entrar input:focus{border-color:var(--verm)}
+.aviso{margin:0 0 24px;padding:16px 20px;border-radius:18px;background:#fff;border:2px solid var(--verm);color:var(--verm);font-weight:600}
+.fim{padding-block:10vh 22vh;text-align:center;color:var(--muted);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.leitura .t{transition:none}}
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/icone/venus-32.png"><link rel="icon" type="image/png" sizes="192x192" href="/icone/venus-192.png"><link rel="apple-touch-icon" href="/icone/apple-touch-icon.png"><script>(function(){var T="V È N U S . Q U E S T";document.title=T;new MutationObserver(function(){if(document.title!==T)document.title=T}).observe(document.querySelector("title")||document.head,{childList:true,characterData:true,subtree:true})})()</script></head>
+<body>
+
+<div id="entrar" hidden>
+  <form id="fe"><label for="senha">senha pra editar</label><input id="senha" type="password" inputmode="numeric" autocomplete="current-password"><button>entrar</button><p id="fem" style="margin:0;min-height:1.2em"></p></form>
+</div>
+
+<div id="app" hidden>
+  <nav class="topo"><div class="wrap" id="nav"></div></nav>
+
+  <header class="wrap abre">
+    <h1 id="nome"></h1>
+    <div class="sub" id="sub"></div>
+  </header>
+
+  <div class="wrap leitura"><p id="leitura"></p></div>
+  <div class="wrap midias" id="midias"></div>
+
+  <section class="pag wrap" id="editar">
+    <div class="cab rv"><div class="num" id="enum"></div><h2>Editar</h2></div>
+    <p class="aviso" id="aviso" hidden>Esta carta está arquivada. Ela não sumiu: toque em “trazer de volta” para ela voltar à coleção.</p>
+    <div class="grade" id="grade"></div>
+  </section>
+  <div class="fim" id="fim">fim da carta</div>
+  <div id="status">carregando…</div>
+</div>
+
+<script src="/titulo-fixo.js"></script>
+<script>
+(function () {
+  var CORES = ['#F48591', '#FA8D85', '#FEA283', '#FFB872', '#8DA599'];
+  var LETRAS = ['var(--rosa)', 'var(--coral)', 'var(--pessego)', 'var(--laranja)', 'var(--salvia)', 'var(--verm)'];
+  var CHAVE = null; try { CHAVE = localStorage.getItem('sr1-chave') } catch (e) {}
+  var num = parseInt((location.pathname.match(/\/carta\/(\d+)/) || [])[1], 10);
+  var C = null, COLS = [], COL = null, ANT = null, PROX = null, t = 0, PEND = {};
+  var st = document.getElementById('status');
+  function hora() { var d = new Date(); return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2) }
+  function status(txt, leve) { st.textContent = txt; st.className = leve ? 'leve' : '' }
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e }
+  function post(d) {
+    return fetch('/api/cartas', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-edit-key': CHAVE }, body: JSON.stringify(d) })
+      .then(function (r) { if (r.status === 401) { status('senha expirou · entre de novo'); throw 0 } if (!r.ok) throw new Error(r.status); return r.json() });
+  }
+  function muda(campo, valor) { PEND[campo] = valor; C[campo] = valor; status('salvando…'); clearTimeout(t); t = setTimeout(salvar, 700) }
+  function salvar() {
+    var envio = PEND; PEND = {}; if (!Object.keys(envio).length) return;
+    post({ acao: 'salvar', id: C.id, carta: envio }).then(function () { status('salvo ' + hora()) })
+      .catch(function (e) { Object.keys(envio).forEach(function (k) { if (!(k in PEND)) PEND[k] = envio[k] }); if (e !== 0) status('sem conexão · tentando de novo'); clearTimeout(t); t = setTimeout(salvar, 4000) });
+  }
+  addEventListener('beforeunload', function (e) { if (Object.keys(PEND).length) { salvar(); e.preventDefault(); e.returnValue = '' } });
+
+  function pedirSenha() {
+    document.getElementById('entrar').hidden = false;
+    document.getElementById('fe').addEventListener('submit', function (e) {
+      e.preventDefault(); var v = document.getElementById('senha').value.trim(), m = document.getElementById('fem'); m.textContent = 'conferindo…';
+      fetch('/api/entrar', { method: 'POST', headers: { 'x-edit-key': v } }).then(function (r) { return r.json() }).then(function (j) {
+        if (j.ok) { try { localStorage.setItem('sr1-chave', v) } catch (x) {} location.reload() } else m.textContent = 'senha errada';
+      }).catch(function () { m.textContent = 'sem conexão, tenta de novo' });
+    });
+  }
+
+  // o nome gigante: título da carta; sem título, o nome da coleção
+  function nome() {
+    var txt = (C.titulo || '').trim() || (COL ? COL.nome : 'carta'), h = document.getElementById('nome');
+    h.textContent = ''; var k = 0;
+    txt.split('').forEach(function (ch) { var s = el('span', '', ch); if (ch.trim()) { s.style.color = LETRAS[k % LETRAS.length]; k++ } else s.style.width = '.25em'; h.appendChild(s) });
+    var n = txt.length; h.style.setProperty('--tam', n <= 7 ? 'clamp(76px,17vw,240px)' : n <= 14 ? 'clamp(60px,11vw,170px)' : n <= 28 ? 'clamp(48px,7.5vw,110px)' : 'clamp(40px,5.5vw,80px)');
+    document.getElementById('sub').textContent = (COL ? COL.nome : 'sem coleção') + ' · carta #' + C.numero;
+    document.title = txt + ' · #' + C.numero; if (window.srTituloFixo && srTituloFixo.copia) srTituloFixo.copia();
+  }
+
+  // o texto da carta, parado na tela, acendendo trecho por trecho igual ao Rebirth
+  var ts = [], esp = null;
+  function leitura() {
+    var p = document.getElementById('leitura'); p.textContent = ''; ts = [];
+    var texto = (C.texto || '').trim();
+    if (!texto) { p.appendChild(el('span', 'vazio', 'Esta carta ainda não tem texto. Escreva lá embaixo, em “texto”.')); if (esp) esp.style.height = '10vh'; return }
+    var ps = texto.split(/(\s+)/), partes = [], a = '', n = 0;
+    ps.forEach(function (w) { if (/^\s+$/.test(w)) { a += w; return } a += w; n++; if (/[,.:;!?]$/.test(w) || n >= 7) { partes.push(a); a = ''; n = 0 } }); if (a) partes.push(a);
+    ts = partes.map(function (x) { var s = el('span', 't', x); p.appendChild(s); return s });
+    ajusta();
+  }
+  function ajusta() {
+    var p = document.getElementById('leitura'); if (!esp) { esp = el('div'); p.after(esp) }
+    // texto comprido: a letra diminui até o parágrafo inteiro caber na tela e ficar parado, como no Rebirth
+    var vh = innerHeight, t0f = window.srTopo ? srTopo() : 90, cabe = (vh - t0f) * 0.9;
+    p.style.fontSize = ''; p.style.maxWidth = ''; var tam = parseFloat(getComputedStyle(p).fontSize), maxw = null;
+    while (ts.length && p.offsetHeight > cabe && tam > 18) { tam = Math.floor(tam * 0.93); p.style.fontSize = tam + 'px'; if (!maxw) { maxw = 1; p.style.maxWidth = '24ch' } }
+    var h = p.offsetHeight;
+    var t0 = window.srTopo ? srTopo() : 90; if (h < (vh - t0) * 0.95) { p.style.position = 'sticky'; p.style.top = (t0 + Math.max(0, (vh - t0 - h) / 2)) + 'px'; esp.style.height = Math.round(Math.max(1, ts.length) * vh * 0.22) + 'px' }
+    else { p.style.position = 'relative'; p.style.top = '0'; esp.style.height = '20vh' }
+    roda();
+  }
+  function roda() {
+    if (!ts.length) return; var p = document.getElementById('leitura'), prog;
+    if (p.style.position === 'sticky') { var nat = esp.getBoundingClientRect().top - p.offsetHeight; prog = ((parseFloat(p.style.top) || 0) - nat) / Math.max(1, esp.offsetHeight) }
+    else { var r = p.getBoundingClientRect(); prog = (innerHeight * 0.6 - r.top) / Math.max(1, r.height) }
+    var at = Math.min(ts.length - 1, Math.floor(prog * ts.length)); ts.forEach(function (s, i) { s.classList.toggle('on', i === at) });
+  }
+  addEventListener('scroll', roda, { passive: true }); addEventListener('resize', function () { ajusta() });
+
+  function midias() {
+    var box = document.getElementById('midias'); box.textContent = '';
+    if (C.imagem) { var a = el('div', 'm rv'), im = el('img'); im.src = C.imagem; im.alt = ''; a.appendChild(im); box.appendChild(a) }
+    if (C.video) { var b = el('div', 'm rv'), v = el('video'); v.src = C.video; v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true; v.setAttribute('playsinline', ''); b.appendChild(v); box.appendChild(b) }
+    observa();
+  }
+
+  function reduz(f) {
+    return new Promise(function (ok) {
+      if (!/^image\/(jpeg|png|webp)/.test(f.type)) return ok(f);
+      var img = new Image(); img.onload = function () {
+        var max = 2600, w = img.naturalWidth, h = img.naturalHeight, s = Math.min(1, max / Math.max(w, h));
+        var cv = document.createElement('canvas'); cv.width = Math.round(w * s); cv.height = Math.round(h * s);
+        cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height);
+        cv.toBlob(function (b) { ok(b || f) }, 'image/jpeg', 0.9); URL.revokeObjectURL(img.src);
+      }; img.onerror = function () { ok(f) }; img.src = URL.createObjectURL(f);
+    });
+  }
+  function envia(f, video) {
+    return (video ? Promise.resolve(f) : reduz(f)).then(function (blob) {
+      var ext = video ? ((f.name.split('.').pop() || 'mp4').toLowerCase()) : 'jpg';
+      return fetch('/api/upload?tipo=' + (video ? 'video' : 'foto') + '&ext=' + ext, { method: 'POST', headers: { 'x-edit-key': CHAVE } })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json() })
+        .then(function (j) { return fetch(j.envio, { method: 'PUT', headers: { 'Content-Type': blob.type || (video ? 'video/mp4' : 'image/jpeg') }, body: blob }).then(function (r) { if (!r.ok) throw new Error(r.status); return j.url }) });
+    });
+  }
+  function cresce(ta) { ta.style.height = 'auto'; ta.style.height = ta.scrollHeight + 'px' }
+  function botao(txt, cls, fn) { var b = el('button', cls || '', txt); b.type = 'button'; b.addEventListener('click', fn); return b }
+
+  function cardMidia(campo, video) {
+    var c = el('div', 'card rv'); c.appendChild(el('div', 'tipo', video ? 'vídeo' : 'foto'));
+    var box = el('div', 'midia'); c.appendChild(box);
+    var ac = el('div', 'acoes'); c.appendChild(ac);
+    function mostra() {
+      box.textContent = ''; ac.textContent = '';
+      if (C[campo]) { var m; if (video) { m = el('video'); m.muted = true; m.loop = true; m.autoplay = true; m.playsInline = true; m.setAttribute('playsinline', '') } else { m = el('img'); m.alt = '' } m.src = C[campo]; box.appendChild(m) }
+      else box.textContent = video ? 'sem vídeo' : 'sem foto';
+      var b = botao(C[campo] ? (video ? 'trocar vídeo' : 'trocar foto') : (video ? 'pôr vídeo' : 'pôr foto'), '', function () {
+        var inp = el('input'); inp.type = 'file'; inp.accept = video ? 'video/*' : 'image/*'; inp.hidden = true; document.body.appendChild(inp);
+        inp.addEventListener('change', function () {
+          var f = inp.files && inp.files[0]; inp.remove(); if (!f) return;
+          b.disabled = true; b.textContent = 'enviando…'; status(video ? 'enviando vídeo…' : 'enviando foto…');
+          envia(f, video).then(function (url) { muda(campo, url); salvar(); mostra(); midias() })
+            .catch(function () { status(video ? 'o vídeo não foi · tenta de novo' : 'a foto não foi · tenta de novo'); mostra() });
+        });
+        inp.click();
+      });
+      ac.appendChild(b);
+      if (C[campo]) ac.appendChild(botao('tirar', 'leve', function () { muda(campo, ''); salvar(); mostra(); midias() }));
+    }
+    mostra(); return c;
+  }
+
+  function cartoes() {
+    var g = document.getElementById('grade'); g.textContent = '';
+    // título
+    var c1 = el('div', 'card rv'); c1.appendChild(el('div', 'tipo', 'título · o nome gigante lá em cima'));
+    var ti = el('input'); ti.type = 'text'; ti.value = C.titulo || ''; ti.placeholder = COL ? COL.nome : 'título'; ti.setAttribute('aria-label', 'título da carta');
+    ti.addEventListener('input', function () { muda('titulo', ti.value); nome() }); c1.appendChild(ti);
+    c1.appendChild(el('p', 'p', 'Sem título, aparece o nome da coleção.')); g.appendChild(c1);
+    // coleção
+    var c2 = el('div', 'card rv'); c2.appendChild(el('div', 'tipo', 'coleção'));
+    var sel = el('select'); sel.setAttribute('aria-label', 'coleção da carta');
+    COLS.forEach(function (c) { var o = el('option', '', c.nome); o.value = c.id; if (c.id === C.colecao_id) o.selected = true; sel.appendChild(o) });
+    sel.addEventListener('change', function () { muda('colecao_id', sel.value); salvar(); COL = COLS.filter(function (c) { return c.id === sel.value })[0]; pinta(); nome(); topo() });
+    c2.appendChild(sel);
+    var ac2 = el('div', 'acoes');
+    ac2.appendChild(botao('+ nova carta', '', function () { var b = this; b.disabled = true; post({ acao: 'nova', colecao_id: C.colecao_id }).then(function (j) { location.href = '/carta/' + j.carta.numero }).catch(function () { b.disabled = false }) }));
+    ac2.appendChild(botao(C.arquivado ? 'trazer de volta' : 'arquivar', 'leve', function () { muda('arquivado', !C.arquivado); salvar(); document.getElementById('aviso').hidden = !C.arquivado; cartoes() }));
+    c2.appendChild(ac2); g.appendChild(c2);
+    // texto
+    var c3 = el('div', 'card largo rv'); c3.appendChild(el('div', 'tipo', 'texto · o que acende ao rolar'));
+    var tx = el('textarea'); tx.value = C.texto || ''; tx.spellcheck = true; tx.setAttribute('aria-label', 'texto da carta');
+    var tl = 0; tx.addEventListener('input', function () { muda('texto', tx.value); cresce(tx); clearTimeout(tl); tl = setTimeout(leitura, 500) });
+    requestAnimationFrame(function () { cresce(tx) }); c3.appendChild(tx); g.appendChild(c3);
+    g.appendChild(cardMidia('imagem', false));
+    g.appendChild(cardMidia('video', true));
+    observa();
+  }
+
+  function pinta() {
+    var i = 0; COLS.forEach(function (c, k) { if (COL && c.id === COL.id) i = k });
+    document.documentElement.style.setProperty('--c', CORES[i % CORES.length]);
+  }
+  function topo() {
+    var n = document.getElementById('nav'); n.textContent = '';
+    n.appendChild(el('span', 'marca', 'carta #' + C.numero));
+    var cor = getComputedStyle(document.documentElement).getPropertyValue('--c');
+    function link(txt, href, on) { var a = el('a', on === false ? 'off' : '', txt); a.href = href; a.style.setProperty('--p', cor); n.appendChild(a); return a }
+    link('← todas as cartas', '/cartas#cartas');
+    link(COL ? COL.nome : 'sem coleção', '/cartas#cartas');
+    link('← anterior', ANT ? '/carta/' + ANT : '#', !!ANT);
+    link('próxima →', PROX ? '/carta/' + PROX : '#', !!PROX);
+    link('editar ↓', '#editar');
+  }
+  var io = null;
+  function observa() {
+    if (!io) io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }) }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.rv:not(.in)').forEach(function (x) { io.observe(x) });
+  }
+  addEventListener('keydown', function (e) { var a = document.activeElement; if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA' || a.tagName === 'SELECT')) return; if (e.key === 'ArrowLeft' && ANT) { salvar(); location.href = '/carta/' + ANT } if (e.key === 'ArrowRight' && PROX) { salvar(); location.href = '/carta/' + PROX } });
+
+  if (!CHAVE) return pedirSenha();
+  if (!num) { document.getElementById('app').hidden = false; status('carta não encontrada'); return }
+  Promise.all([
+    fetch('/api/textos?check=1', { headers: { 'x-edit-key': CHAVE } }).then(function (r) { return r.json() }),
+    fetch('/api/cartas?numero=' + num).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json() }),
+    fetch('/api/cartas?colecoes=1').then(function (r) { return r.json() })
+  ]).then(function (res) {
+    if (!res[0].ok) { try { localStorage.removeItem('sr1-chave') } catch (e) {} return pedirSenha() }
+    C = res[1].carta; ANT = res[1].anterior; PROX = res[1].proxima;
+    COLS = res[2].filter(function (c) { return !c.arquivado || c.id === C.colecao_id });
+    COL = COLS.filter(function (c) { return c.id === C.colecao_id })[0] || null;
+    document.getElementById('app').hidden = false;
+    pinta(); topo(); nome(); window.srTituloFixo && srTituloFixo(); document.getElementById('enum').textContent = 'carta #' + C.numero;
+    document.getElementById('aviso').hidden = !C.arquivado;
+    leitura(); midias(); cartoes(); status('salvo', true);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajusta);
+    if (location.hash === '#editar') { document.documentElement.style.scrollBehavior = 'auto'; document.querySelectorAll('#editar .rv').forEach(function (x) { x.classList.add('in') }); document.getElementById('editar').scrollIntoView(); document.documentElement.style.scrollBehavior = '' }
+  }).catch(function () { document.getElementById('app').hidden = false; status('carta não encontrada') });
+})();
+</script>
+</body>
+</html>

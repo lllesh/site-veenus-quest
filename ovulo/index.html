@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="v è n u s"><meta name="application-name" content="v è n u s"><meta name="theme-color" content="#ffffff"><script>if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>a mãe do óvulo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;800;900&display=swap">
+<style>
+:root{
+  --bg:#FBFAF8; --ink:#2B2729; --muted:#6F6769; --line:#ECE6E3;
+  --rosa:#F48591; --coral:#FA8D85; --pessego:#FEA283; --laranja:#FFB872; --salvia:#8DA599; --verm:#AC0000;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Figtree",system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:20px}
+
+.abre{padding-block:12vh 4vh}
+.abre h1{margin:0;font-weight:900;font-size:clamp(96px,22vw,300px);line-height:.8;letter-spacing:-.06em}
+.abre h1 span{display:inline-block}
+.abre h1 .p1{color:var(--rosa)}.abre h1 .p2{color:var(--laranja)}.abre h1 .p3{color:var(--salvia)}
+.abre .sub{margin-top:48px;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.leitura{position:relative}
+.leitura p{position:sticky;margin:0;font-weight:800;font-size:clamp(30px,5.2vw,72px);line-height:1.05;letter-spacing:-.035em;max-width:17ch}
+.leitura .t{color:rgba(43,39,41,.13);transition:color .45s ease}
+.leitura .t.on{color:var(--ink)}
+
+/* coleções */
+nav.cols{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav.cols .wrap{display:flex;gap:8px;align-items:center;overflow-x:auto;padding-block:14px;scrollbar-width:none}
+nav.cols .wrap::-webkit-scrollbar{display:none}
+nav.cols .marca{font-weight:900;letter-spacing:-.02em;font-size:18px;margin-right:10px;white-space:nowrap}
+.pill{flex:none;font:600 13px/1 "Figtree",system-ui,sans-serif;letter-spacing:0;text-transform:none;color:var(--ink);padding:10px 14px;border-radius:999px;border:0;background:color-mix(in srgb,var(--c,#ddd) 35%,#fff);cursor:pointer;white-space:nowrap;display:inline-flex;gap:8px;align-items:center}
+.pill small{font-size:11px;color:var(--muted);font-weight:600}
+.pill.ativo{background:var(--ink);color:#fff}.pill.ativo small{color:#ddd}
+
+section.colecao{padding-block:10vh 4vh}
+.cab{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.cab .num{font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.cab h2{margin:0;font-weight:900;font-size:clamp(52px,10vw,132px);line-height:.88;letter-spacing:-.05em;color:var(--c);outline:none;border-radius:12px;overflow-wrap:anywhere}
+.cab h2:focus{box-shadow:0 0 0 3px var(--verm)}
+.ferr{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.busca{font:500 16px "Figtree",system-ui,sans-serif;padding:12px 16px;border-radius:999px;border:2px solid var(--line);background:#fff;min-width:220px;outline:none;max-width:100%}
+.busca:focus{border-color:var(--verm)}
+
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+a.carta{position:relative;display:flex;flex-direction:column;aspect-ratio:5/7;border-radius:28px;overflow:hidden;background:var(--c);color:#fff;text-decoration:none;box-shadow:0 10px 30px rgba(43,39,41,.10);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+a.carta:hover,a.carta:focus-visible{transform:translateY(-6px) rotate(-1deg);box-shadow:0 18px 40px rgba(43,39,41,.18);outline:none}
+a.carta .n{position:absolute;top:14px;left:16px;font-size:12px;font-weight:800;letter-spacing:.1em;z-index:2;text-shadow:0 1px 6px rgba(0,0,0,.25)}
+a.carta img,a.carta video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+a.carta .tx{margin:auto 0 0;padding:44px 16px 18px;font-weight:800;font-size:17px;line-height:1.15;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;position:relative;z-index:1;overflow-wrap:anywhere}
+a.carta.com-midia .tx{background:linear-gradient(transparent,rgba(0,0,0,.55));font-size:15px}
+a.carta.vazia .tx{color:rgba(255,255,255,.75);font-weight:600}
+.mais{display:flex;justify-content:center;margin-top:28px}
+
+button{font:600 12px/1 "Figtree",system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:12px 16px;border-radius:999px;border:2px solid var(--verm);background:var(--verm);color:#fff;cursor:pointer}
+button.leve{background:#fff;color:var(--verm)}
+button:focus-visible,.pill:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+button[disabled]{opacity:.45;cursor:default}
+
+.rv{opacity:0;transform:translateY(44px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+#status{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:30;font:700 12px/1 "Figtree",system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:14px 20px;border-radius:999px;background:var(--verm);color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+#status.leve{background:#fff;color:var(--verm)}
+#entrar{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:24px}
+#entrar form{display:flex;flex-direction:column;gap:16px;width:min(320px,100%);text-align:center}
+#entrar label{font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase}
+#entrar input{font:inherit;font-size:22px;text-align:center;letter-spacing:.3em;padding:12px;border:2px solid var(--ink);border-radius:999px;background:transparent;outline:none}
+#entrar input:focus{border-color:var(--verm)}
+.fim{padding-block:10vh 22vh;text-align:center;color:var(--muted);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+.vazio{color:var(--muted);padding:40px 0}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.leitura .t{transition:none}a.carta{transition:none}}
+
+/* regras de design da Dra Lê: pílula sempre cheia de cor e letra #FFFBF3, preto nunca, vermelho só no site P&B, respiro */
+:root{--creme:#FFFBF3}
+.abre h1{font-size:clamp(76px,17vw,240px)}
+.abre .sub{margin-top:22px}
+.leitura{margin-bottom:14vh}
+.leitura .t.on{color:var(--laranja)}
+nav.cols .wrap{gap:12px;padding-block:18px;padding-inline:20px 40px}
+nav.cols .marca{color:var(--muted)}
+.pill{background:var(--c,#8DA599)!important;color:var(--creme)!important;padding:11px 16px}
+.pill small{color:var(--creme)!important;opacity:.8}
+.pill.ativo{box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--c)}
+button,button.leve{border:0;color:var(--creme)}
+button{background:var(--laranja)}
+button.leve{background:var(--salvia)}
+.cab{row-gap:32px;margin-bottom:44px}
+.cab .num{font-size:11px;margin-bottom:6px}
+.ferr{gap:12px}
+.busca{background:color-mix(in srgb,var(--laranja) 18%,#fff);border-color:transparent;color:var(--muted)}
+.busca:focus{border-color:var(--laranja)}
+.grade{gap:28px}
+a.carta{color:var(--creme)}
+#status,#status.leve{background:var(--salvia);color:var(--creme)}
+#entrar input:focus{border-color:var(--laranja)}
+nav.cols .wrap{flex-wrap:wrap;overflow:visible;row-gap:12px}
+/* salvo vira bolinha rosa à direita; letras pequenas um pouco maiores; subtítulo cinza */
+#status,#status.leve{left:auto;right:24px;bottom:calc(24px + env(safe-area-inset-bottom));width:18px;height:18px;padding:0;border-radius:50%;background:var(--rosa);font-size:0;line-height:0;color:transparent;overflow:hidden;box-shadow:0 4px 14px rgba(244,133,145,.45)}
+#status.salvando{animation:pulsa 1s ease-in-out infinite}
+#status.erro{background:var(--coral);animation:pulsa .5s ease-in-out infinite}
+@keyframes pulsa{50%{transform:scale(1.5);opacity:.6}}
+.abre .sub{color:#A39B9D;font-size:14px}
+/* salvo volta a ser pílula: rosa, letra #FFFBF3, à direita, letra maior */
+#status,#status.leve,#status.salvando,#status.erro{width:auto;height:auto;padding:14px 22px;border-radius:999px;background:var(--rosa);color:var(--creme);font:600 17px/1 "Figtree",system-ui,sans-serif;letter-spacing:0;text-transform:none;overflow:visible;animation:none;box-shadow:0 8px 24px rgba(244,133,145,.35)}
+#status.erro{background:var(--coral)}
+/* tudo na mesma linha da esquerda, e mais longe da beirada */
+.wrap,.titulo-fixo .wrap{max-width:none;padding-inline:clamp(40px,9vw,160px)}
+.abre h1,.titulo-fixo .tf{margin-left:-.028em}
+.leitura p{margin-left:-.03em}
+/* ajustes: subtítulo menor, frase maior, pílula mais baixa e estreita */
+.abre .sub{font-size:12px}
+.leitura p{font-size:clamp(38px,6.6vw,108px)}
+#status,#status.leve,#status.salvando,#status.erro{padding:10px 18px}
+#status,#status.leve,#status.salvando,#status.erro{right:72px;bottom:calc(72px + env(safe-area-inset-bottom));font-size:20px;padding:16px 26px}
+.cab .num{font-size:12px;color:#A39B9D}
+.pill,button,button.leve{font-size:15px!important}
+.pill small{font-size:13px}
+.busca{font-size:17px}
+a.carta .tx{font-size:19px}
+nav.cols .marca{font-size:20px;color:#A39B9D}
+button,button.leve{font:600 13px/1 "Figtree",system-ui,sans-serif;letter-spacing:0;text-transform:none;padding:12px 18px}
+/* salvar: bolinha rosa com S, em cima à direita */
+#status,#status.leve,#status.salvando,#status.erro{top:calc(24px + env(safe-area-inset-top));right:28px;bottom:auto;left:auto;width:44px;height:44px;padding:0;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--rosa);color:var(--creme);font:800 19px/1 "Figtree",system-ui,sans-serif;letter-spacing:0;box-shadow:0 6px 18px rgba(244,133,145,.35)}
+#status.salvando{animation:pulsa 1s ease-in-out infinite}
+#status.erro{background:var(--coral);animation:pulsa .5s ease-in-out infinite}
+@keyframes pulsa{50%{transform:scale(1.15);opacity:.7}}
+.titulo-fixo{z-index:15}
+/* bolinha maior (não ponto); subtítulo cinza claro e um pouquinho menor */
+#status,#status.leve,#status.salvando,#status.erro{width:58px;height:58px;font-size:24px}
+.abre .sub{color:#B5ADAF!important;font-size:13px!important}
+/* o título grande não some mais: ele mesmo fica parado no alto, do mesmo tamanho */
+.abre{position:sticky;top:calc(20px - 12vh);z-index:10;background:var(--bg);padding-top:12vh;padding-bottom:28px}
+.titulo-fixo{display:none!important}
+/* bolinha: um pouco menor, mais clarinha, mais para baixo e para a esquerda */
+#status,#status.leve,#status.salvando,#status.erro{width:50px;height:50px;font-size:21px;top:calc(110px + env(safe-area-inset-top));right:96px;opacity:.75}
+#status,#status.leve,#status.salvando,#status.erro{top:calc(86px + env(safe-area-inset-top));right:72px}
+#status,#status.leve,#status.salvando,#status.erro{opacity:.4}
+/* título e subtítulo não se mexem nunca: só o texto rola */
+.abre{top:0}
+/* no computador o título sobe e diminui (não fica parado); no telefone fica como está */
+@media (min-width:900px){.abre{position:relative!important;top:auto!important}.titulo-fixo{display:block!important}}
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/icone/venus-32.png"><link rel="icon" type="image/png" sizes="192x192" href="/icone/venus-192.png"><link rel="apple-touch-icon" href="/icone/apple-touch-icon.png"><script>(function(){var T="a mãe do óvulo";document.title=T;new MutationObserver(function(){if(document.title!==T)document.title=T}).observe(document.querySelector("title")||document.head,{childList:true,characterData:true,subtree:true})})()</script></head>
+<body>
+
+<div id="entrar" hidden>
+  <form id="fe"><label for="senha">senha pra editar</label><input id="senha" type="password" inputmode="numeric" autocomplete="current-password"><button>entrar</button><p id="fem" style="margin:0;min-height:1.2em"></p></form>
+</div>
+
+<div id="app" hidden>
+  <header class="wrap abre">
+    <h1 style="color:var(--laranja)">a mãe <br>do óvulo</h1>
+    <div class="sub">livro.ink · cartas e coleções</div>
+  </header>
+  <div class="wrap leitura"><p id="intro">Cada carta tem a sua própria página. Toque numa carta para abrir e mexer nela. Aqui a senhora vê todas, cria cartas e coleções, busca e organiza. Arquivar não apaga nada.</p></div>
+
+  <div id="abaixo" hidden aria-hidden="true">
+  <nav class="cols"><div class="wrap" id="cols"><span class="marca">coleções</span></div></nav>
+
+  <section class="wrap colecao" id="colecao">
+    <div class="cab">
+      <div>
+        <div class="num" id="cnum"></div>
+        <h2 id="cnome" spellcheck="true"></h2>
+      </div>
+      <div class="ferr">
+        <input class="busca" id="busca" type="search" placeholder="buscar nesta coleção" aria-label="buscar cartas">
+        <button id="nova" type="button">+ nova carta</button>
+        <button id="arqv" class="leve" type="button">ver arquivadas</button>
+        <button id="arqc" class="leve" type="button">arquivar coleção</button>
+      </div>
+    </div>
+    <div class="grade" id="grade"></div>
+    <div class="mais"><button id="mais" class="leve" type="button" hidden>carregar mais</button></div>
+  </section>
+  <div class="fim">fim do cms</div>
+  </div>
+  <div id="status">carregando…</div>
+</div>
+
+<script>window.SR_DESKTOP = matchMedia('(min-width: 900px)').matches; window.SR_TITULO_IGUAL = !window.SR_DESKTOP</script><script src="/titulo-fixo.js"></script>
+<script>
+(function () {
+  var CORES = ['#F48591', '#FA8D85', '#FEA283', '#FFB872', '#8DA599'];
+  var CHAVE = null; try { CHAVE = localStorage.getItem('sr1-chave') } catch (e) {}
+  var COLS = [], atual = null, offset = 0, total = 0, busca = '', arquivadas = false, lendo = false;
+  var st = document.getElementById('status');
+  function hora() { var d = new Date(); return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2) }
+  function status(txt, leve) { st.textContent = 'S'; st.title = txt; st.setAttribute('aria-label', txt); st.className = /salvando|enviando/.test(txt) ? 'salvando' : /sem conexão|expirou|não foi/.test(txt) ? 'erro' : '' }
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e }
+  function corDe(c) { var i = COLS.indexOf(c); return CORES[(i < 0 ? 0 : i) % CORES.length] }
+  function post(dados) {
+    status('salvando…');
+    return fetch('/api/cartas', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-edit-key': CHAVE }, body: JSON.stringify(dados) })
+      .then(function (r) { if (r.status === 401) { status('senha expirou · entre de novo'); throw 0 } if (!r.ok) throw new Error(r.status); return r.json() })
+      .then(function (j) { status('salvo ' + hora()); return j })
+      .catch(function (e) { if (e !== 0) status('sem conexão · tenta de novo'); throw e });
+  }
+
+  function pedirSenha() {
+    document.getElementById('entrar').hidden = false;
+    document.getElementById('fe').addEventListener('submit', function (e) {
+      e.preventDefault(); var v = document.getElementById('senha').value.trim(), m = document.getElementById('fem'); m.textContent = 'conferindo…';
+      fetch('/api/entrar', { method: 'POST', headers: { 'x-edit-key': v } }).then(function (r) { return r.json() }).then(function (j) {
+        if (j.ok) { try { localStorage.setItem('sr1-chave', v) } catch (x) {} location.reload() } else m.textContent = 'senha errada';
+      }).catch(function () { m.textContent = 'sem conexão, tenta de novo' });
+    });
+  }
+
+  function pills() {
+    var box = document.getElementById('cols');
+    [].slice.call(box.querySelectorAll('.pill,button')).forEach(function (x) { x.remove() });
+    COLS.filter(function (c) { return !c.arquivado }).forEach(function (c) {
+      var b = el('button', 'pill' + (c === atual ? ' ativo' : '')); b.type = 'button'; b.style.setProperty('--c', corDe(c));
+      b.appendChild(document.createTextNode(c.nome)); b.appendChild(el('small', '', String(c.total)));
+      b.addEventListener('click', function () { abre(c) }); box.appendChild(b);
+    });
+    var nv = el('button', 'leve', '+ nova coleção'); nv.type = 'button'; nv.style.flex = 'none';
+    nv.addEventListener('click', function () { post({ acao: 'colecao_nova', nome: 'nova coleção' }).then(function (j) { var c = Object.assign(j.colecao, { total: 0 }); COLS.push(c); abre(c); var h = document.getElementById('cnome'); h.focus(); document.execCommand && document.execCommand('selectAll', false, null) }) });
+    box.appendChild(nv);
+    var arq = COLS.filter(function (c) { return c.arquivado });
+    arq.forEach(function (c) {
+      var b = el('button', 'pill'); b.type = 'button'; b.style.opacity = '.55'; b.textContent = c.nome + ' (arquivada)'; b.title = 'trazer de volta';
+      b.addEventListener('click', function () { post({ acao: 'colecao_salvar', id: c.id, arquivado: false }).then(function () { c.arquivado = false; abre(c) }) });
+      box.appendChild(b);
+    });
+  }
+  function abre(c) {
+    atual = c; offset = 0; busca = ''; arquivadas = false; document.getElementById('busca').value = '';
+    try { localStorage.setItem('cms-colecao', c.id) } catch (e) {}
+    var sec = document.getElementById('colecao'); sec.style.setProperty('--c', corDe(c));
+    document.getElementById('cnome').textContent = c.nome;
+    document.getElementById('arqv').textContent = 'ver arquivadas';
+    pills(); carrega(true);
+  }
+  function carrega(limpa) {
+    if (lendo || !atual) return; lendo = true;
+    var grade = document.getElementById('grade'); if (limpa) { grade.textContent = ''; offset = 0 }
+    var u = '/api/cartas?colecao=' + atual.id + '&offset=' + offset + '&limit=60' + (busca ? '&busca=' + encodeURIComponent(busca) : '') + (arquivadas ? '&arquivadas=1' : '');
+    fetch(u).then(function (r) { return r.json() }).then(function (j) {
+      total = j.total; offset += j.cartas.length;
+      document.getElementById('cnum').textContent = (arquivadas ? 'arquivadas · ' : '') + total + (total === 1 ? ' carta' : ' cartas');
+      if (limpa && !j.cartas.length) grade.appendChild(el('p', 'vazio', busca ? 'Nenhuma carta com essa busca.' : (arquivadas ? 'Nenhuma carta arquivada.' : 'Coleção vazia. Toque em “+ nova carta”.')));
+      j.cartas.forEach(function (c) { grade.appendChild(tile(c)) });
+      document.getElementById('mais').hidden = offset >= total;
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }) });
+      grade.querySelectorAll('.rv:not(.in)').forEach(function (x) { io.observe(x) });
+    }).catch(function () { status('sem conexão · recarregue') }).then(function () { lendo = false });
+  }
+  function tile(c) {
+    var a = el('a', 'carta rv'); a.href = '/carta/' + c.numero; a.style.setProperty('--c', corDe(atual));
+    a.appendChild(el('span', 'n', '#' + c.numero));
+    if (c.imagem) { var im = el('img'); im.src = c.imagem; im.loading = 'lazy'; im.alt = ''; a.appendChild(im); a.classList.add('com-midia') }
+    else if (c.video) { var v = el('video'); v.src = c.video; v.muted = true; v.preload = 'metadata'; v.playsInline = true; a.appendChild(v); a.classList.add('com-midia') }
+    var txt = c.titulo || c.texto;
+    if (!txt && !c.imagem && !c.video) { a.classList.add('vazia'); txt = 'carta em branco' }
+    if (txt) a.appendChild(el('p', 'tx', txt));
+    return a;
+  }
+
+  var tb = 0;
+  document.getElementById('busca').addEventListener('input', function (e) { busca = e.target.value.trim(); clearTimeout(tb); tb = setTimeout(function () { carrega(true) }, 300) });
+  document.getElementById('mais').addEventListener('click', function () { carrega(false) });
+  document.getElementById('nova').addEventListener('click', function () {
+    var b = this; b.disabled = true;
+    post({ acao: 'nova', colecao_id: atual.id }).then(function (j) { location.href = '/carta/' + j.carta.numero }).catch(function () { b.disabled = false });
+  });
+  document.getElementById('arqv').addEventListener('click', function () { arquivadas = !arquivadas; this.textContent = arquivadas ? 'ver ativas' : 'ver arquivadas'; carrega(true) });
+  document.getElementById('arqc').addEventListener('click', function () {
+    if (!atual) return; var c = atual;
+    post({ acao: 'colecao_salvar', id: c.id, arquivado: true }).then(function () { c.arquivado = true; var outra = COLS.filter(function (x) { return !x.arquivado })[0]; if (outra) abre(outra); else pills() });
+  });
+  var cn = document.getElementById('cnome'), tn = 0;
+  cn.contentEditable = 'plaintext-only'; if (cn.contentEditable !== 'plaintext-only') cn.contentEditable = 'true';
+  cn.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); cn.blur() } });
+  cn.addEventListener('input', function () { var c = atual, nome = cn.textContent.trim() || 'sem nome'; c.nome = nome; status('salvando…'); clearTimeout(tn); tn = setTimeout(function () { post({ acao: 'colecao_salvar', id: c.id, nome: nome }).then(pills) }, 700) });
+
+  function leitura() {
+    var p = document.getElementById('intro'), ps = p.textContent.split(/(\s+)/), partes = [], a = '', n = 0;
+    ps.forEach(function (w) { if (/^\s+$/.test(w)) { a += w; return } a += w; n++; if (/[,.:;]$/.test(w) || n >= 6) { partes.push(a); a = ''; n = 0 } }); if (a) partes.push(a);
+    p.textContent = ''; var ts = partes.map(function (x) { var s = el('span', 't', x); p.appendChild(s); return s });
+    var esp = el('div'); p.after(esp);
+    function ajusta() { var vh = innerHeight, ab = document.querySelector('.abre'), t0 = window.SR_DESKTOP ? (window.srTopo ? srTopo() : 90) : ab.offsetHeight; var h = p.offsetHeight; p.style.top = (t0 + 4) + 'px'; esp.style.height = Math.round(ts.length * vh * 0.2) + 'px'; roda() }
+    function roda() { var nat = esp.getBoundingClientRect().top - p.offsetHeight, prog = ((parseFloat(p.style.top) || 0) - nat) / Math.max(1, esp.offsetHeight), at = Math.min(ts.length - 1, Math.floor(prog * ts.length)); ts.forEach(function (s, i) { s.classList.toggle('on', i === at) }) }
+    addEventListener('scroll', roda, { passive: true }); addEventListener('resize', ajusta);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajusta); ajusta();
+  }
+
+  if (!CHAVE) return pedirSenha();
+  fetch('/api/textos?check=1', { headers: { 'x-edit-key': CHAVE } }).then(function (r) { return r.json() }).then(function (j) {
+    if (!j.ok) { try { localStorage.removeItem('sr1-chave') } catch (e) {} return pedirSenha() }
+    return fetch('/api/cartas?colecoes=1').then(function (r) { return r.json() }).then(function (cols) {
+      document.getElementById('app').hidden = false; if (window.SR_DESKTOP && window.srTituloFixo) srTituloFixo(); leitura(); status('salvo', true); return;
+      var ult = null; try { ult = localStorage.getItem('cms-colecao') } catch (e) {}
+      var c = COLS.filter(function (x) { return x.id === ult && !x.arquivado })[0] || COLS.filter(function (x) { return !x.arquivado })[0];
+      if (c) abre(c); else pills();
+      if (location.hash === '#cartas') { document.documentElement.style.scrollBehavior = 'auto'; document.querySelector('nav.cols').scrollIntoView(); document.documentElement.style.scrollBehavior = '' }
+    });
+  }).catch(function () { status('sem conexão · recarregue a página'); document.getElementById('app').hidden = false });
+})();
+</script>
+</body>
+</html>

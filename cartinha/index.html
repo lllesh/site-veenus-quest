@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><link rel="manifest" href="/manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="v è n u s"><meta name="application-name" content="v è n u s"><meta name="theme-color" content="#ffffff"><script>if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){})</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>V È N U S . Q U E S T</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800;900&display=swap">
+<style>
+:root{--bg:#FBFAF8;--cinza:#A39B9D;--creme:#FFFBF3;--rosa:#F48591;--coral:#FA8D85;--pessego:#FEA283;--laranja:#FFB872;--salvia:#8DA599;--c:var(--laranja);color-scheme:light}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);font-family:"Figtree",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:clamp(40px,6vw,96px)}
+
+/* a carta fechada: frente e verso */
+main{width:100%;display:flex;flex-direction:column;align-items:center}
+.mesa{perspective:2200px;width:min(440px,100%)}
+.carta{position:relative;aspect-ratio:5/7;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.8,.2,1);cursor:pointer}
+.carta.virada{transform:rotateY(180deg)}
+.lado{position:absolute;inset:0;border-radius:44px;background:var(--c);color:var(--creme);backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:44px 40px;display:flex;flex-direction:column;box-shadow:0 30px 60px rgba(255,184,114,.28)}
+.verso{transform:rotateY(180deg);background:var(--salvia);box-shadow:0 30px 60px rgba(141,165,153,.28)}
+.num{font-size:14px;font-weight:800;letter-spacing:.14em;opacity:.85}
+.frente h1{overflow-wrap:break-word;margin:auto 0 0;font-weight:900;font-size:clamp(40px,7vw,56px);line-height:.92;letter-spacing:-.045em}
+.tipo{margin-top:22px;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+.verso dl{margin:auto 0 0;display:grid;gap:18px}
+.verso dt{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
+.verso dd{margin:4px 0 0;font-size:22px;font-weight:800;letter-spacing:-.01em}
+.dica{margin-top:28px;text-align:center;color:var(--cinza);font-size:14px}
+.acoes{margin-top:22px;display:flex;justify-content:center;gap:12px}
+button{font:600 16px/1 "Figtree",system-ui,sans-serif;padding:14px 22px;border:0;border-radius:999px;background:var(--c);color:var(--creme);cursor:pointer}
+button.dois{background:var(--salvia)}
+button:focus-visible{outline:3px solid var(--rosa);outline-offset:3px}
+
+/* a carta aberta: vira página, dentro de uma carta expandida */
+.aberta{position:fixed;inset:0;z-index:20;padding:clamp(14px,2.2vw,32px);background:var(--bg);display:flex}
+.pagina{position:relative;flex:1;border-radius:clamp(28px,4vw,56px);background:var(--creme);overflow:auto;padding:clamp(48px,7vw,110px) clamp(36px,8vw,150px) 20vh;box-shadow:0 0 0 1px #F1E9DD inset;transform-origin:center;animation:abre .55s cubic-bezier(.2,.8,.2,1)}
+@keyframes abre{from{transform:scale(.55);opacity:0;border-radius:44px}to{transform:none;opacity:1}}
+.pagina h2{margin:0;color:var(--laranja);font-weight:900;font-size:clamp(64px,11vw,170px);line-height:.86;letter-spacing:-.055em}
+.pagina .sub{margin-top:22px;color:var(--cinza);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.pagina .texto{margin-top:8vh;max-width:18ch;font-weight:800;font-size:clamp(34px,5.4vw,80px);line-height:1.02;letter-spacing:-.035em;color:#DCD6D3}
+.pagina .texto b{color:var(--laranja);font-weight:800}
+.fechar{position:absolute;top:clamp(20px,3vw,40px);right:clamp(20px,3vw,40px);width:56px;height:56px;padding:0;border-radius:50%;font-size:26px;line-height:56px;background:var(--rosa)}
+@media (prefers-reduced-motion:reduce){.carta{transition:none}.pagina{animation:none}}
+</style>
+<link rel="icon" type="image/png" sizes="32x32" href="/icone/venus-32.png"><link rel="icon" type="image/png" sizes="192x192" href="/icone/venus-192.png"><link rel="apple-touch-icon" href="/icone/apple-touch-icon.png"><script>(function(){var T="V È N U S . Q U E S T";document.title=T;new MutationObserver(function(){if(document.title!==T)document.title=T}).observe(document.querySelector("title")||document.head,{childList:true,characterData:true,subtree:true})})()</script></head>
+<body>
+
+<main>
+  <div class="mesa">
+    <div class="carta" id="carta" role="button" tabindex="0" aria-label="virar a carta">
+      <section class="lado frente">
+        <span class="num">#1588</span>
+        <h1>o folículo é a mãe do óvulo</h1>
+        <span class="tipo">teoria</span>
+      </section>
+      <section class="lado verso" aria-hidden="true">
+        <span class="num">#1588 · verso</span>
+        <dl>
+          <div><dt>o que é</dt><dd>teoria</dd></div>
+          <div><dt>de onde veio</dt><dd>airtable · ee.cards</dd></div>
+          <div><dt>pilha</dt><dd>texto · vídeo · áudio</dd></div>
+        </dl>
+      </section>
+    </div>
+  </div>
+  <p class="dica">toque na carta para virar</p>
+  <div class="acoes"><button id="abrir" type="button">abrir a carta</button></div>
+</main>
+
+<div class="aberta" id="aberta" hidden>
+  <article class="pagina" role="dialog" aria-label="o folículo é a mãe do óvulo">
+    <button class="fechar" id="fechar" type="button" aria-label="fechar a carta">×</button>
+    <h2>o folículo<br>é a mãe<br>do óvulo</h2>
+    <div class="sub">carta #1588 · teoria</div>
+    <p class="texto">Aqui entra o texto da carta. <b>Esta é só uma carta de exemplo</b> para a senhora ver como fica: fechada, virada e aberta.</p>
+  </article>
+</div>
+
+<script>
+(function () {
+  var carta = document.getElementById('carta'), aberta = document.getElementById('aberta');
+  function vira() { carta.classList.toggle('virada'); carta.querySelector('.verso').setAttribute('aria-hidden', !carta.classList.contains('virada')); carta.querySelector('.frente').setAttribute('aria-hidden', carta.classList.contains('virada')) }
+  carta.addEventListener('click', vira);
+  carta.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); vira() } });
+  document.getElementById('abrir').addEventListener('click', function () { aberta.hidden = false; document.getElementById('fechar').focus() });
+  document.getElementById('fechar').addEventListener('click', function () { aberta.hidden = true; document.getElementById('abrir').focus() });
+  addEventListener('keydown', function (e) { if (e.key === 'Escape' && !aberta.hidden) { aberta.hidden = true } });
+})();
+</script>
+</body>
+</html>

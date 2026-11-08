@@ -1,0 +1,91 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "functions": {
+    "api/cms.js": {
+      "includeFiles": "api/_cms/**"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/_ext/framerusercontent.com/cms/:path*",
+      "destination": "/api/cms?p=:path*"
+    },
+    {
+      "source": "/carta/:n",
+      "destination": "/carta"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/painel-5",
+      "destination": "/cartas",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vitra",
+      "destination": "/mae-do-ovulo",
+      "permanent": true
+    },
+    {
+      "source": "/vitra",
+      "destination": "/mae-do-ovulo",
+      "permanent": true
+    },
+    {
+      "source": "/blog/stussy",
+      "destination": "/saude-folicular",
+      "permanent": true
+    },
+    {
+      "source": "/stussy",
+      "destination": "/saude-folicular",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nike",
+      "destination": "/o-x-do-foliculo",
+      "permanent": true
+    },
+    {
+      "source": "/nike",
+      "destination": "/o-x-do-foliculo",
+      "permanent": true
+    },
+    {
+      "source": "/blog/aesop",
+      "destination": "/tri-qualidade-oocitaria",
+      "permanent": true
+    },
+    {
+      "source": "/aesop",
+      "destination": "/tri-qualidade-oocitaria",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nitro",
+      "destination": "/ovarioscope",
+      "permanent": true
+    },
+    {
+      "source": "/nitro",
+      "destination": "/ovarioscope",
+      "permanent": true
+    },
+    {
+      "source": "/blog/prince",
+      "destination": "/operando-um-milagre",
+      "permanent": true
+    },
+    {
+      "source": "/prince",
+      "destination": "/operando-um-milagre",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/",
+      "permanent": false
+    }
+  ]
+}
